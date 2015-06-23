@@ -8,8 +8,6 @@ Suggestions.allow({
   },
 
   remove: function(userId, doc) {
-    console.log(userId);
-    console.log(doc.createdBy);
     return (userId === doc.createdBy);
   }
 });
