@@ -4,9 +4,9 @@ CatWins = new Mongo.Collection('catwins');
 
 if (Meteor.isClient) {
 
-  var cat1, cat2;  
+  var cat1, cat2;
   var selectedCat = false;
-  
+
   Template.catImages.events({
     'click .catChoice': function(e,t) {
 
@@ -17,11 +17,12 @@ if (Meteor.isClient) {
       }
 
       var elem = e.currentTarget;
-      var winningCat = $(elem).data('cat');
+
+      //data-cat was not updating the winningCat, had to revert to attribute
+      var winningCat = $(elem).attr('cat');
 
       CatStats.insert({
-        catName: winningCat, 
-        ddpSessionId: Meteor.connection._lastSession,
+        catName: winningCat,
         sessionId: Session.get('sessionId'),
         battleNumber: Session.get('battleNumber')
       });
@@ -53,7 +54,7 @@ if (Meteor.isClient) {
 
         Session.set('battleNumber', Session.get('battleNumber')+1);
       }, 1000)
-      
+
     }
   });
 
@@ -64,7 +65,7 @@ if (Meteor.isClient) {
 
       if(!cat1)
         cat1 = chooseRandomNumber(0,13);
-      
+
       if(!cat2)
         cat2 = chooseRandomNumber(0,13, cat1);
 
@@ -83,10 +84,10 @@ if (Meteor.isClient) {
 
   Template.numberOfPlayers.helpers({
     'activePlayers': function() {
-      return ActivePlayers.find({status: 'active', provider: 'client', sessionId: {$exists: true}});
+      return ActivePlayers.find({status: 'active', sessionId: {$exists: true}});
     },
     'playerVotes': function(sessionId) {
-      
+
       if(!sessionId) {
         return;
       }
@@ -99,7 +100,9 @@ if (Meteor.isClient) {
     Session.set('sessionId', sessionId);
     Session.set('battleNumber', 1);
 
-    ActivePlayers.insert({status: 'active', provider: 'client', sessionId: sessionId});
+    Meteor.call('registerClient', sessionId, function(error,result) {
+
+    });
   });
 }
 
@@ -115,7 +118,7 @@ if (Meteor.isServer) {
     var userAgent = connection.httpHeaders['user-agent'];
 
     ActivePlayers.insert({
-      connectionId: connection.id, 
+      connectionId: connection.id,
       status: 'active',
       userAgent: userAgent,
       browser: getBrowser(userAgent),
@@ -123,9 +126,18 @@ if (Meteor.isServer) {
     });
 
     connection.onClose(function() {
-      ActivePlayers.update({connectionId: connection.id}, {status: 'disconnected'});
+      ActivePlayers.update({connectionId: connection.id}, {$set: {status: 'disconnected'}});
     });
   });
+
+  Meteor.methods({
+    'registerClient': function(sessionId) {
+      console.log('conn', this.connection);
+      console.log('sessionId',sessionId);
+
+      ActivePlayers.upsert({connectionId: this.connection.id}, {$set: {sessionId: sessionId, connectionId: this.connection.id}});
+    }
+  })
 }
 
 function chooseRandomNumber(min, max, notEqualTo) {
