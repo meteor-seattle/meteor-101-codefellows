@@ -1,0 +1,55 @@
+<head>
+  <title>battle-cats-demo</title>
+</head>
+
+<body>
+  <h1>Welcome to Battle Cats!</h1>
+
+  {{> catImages}}
+  {{> catBattleResults}}
+  {{> numberOfPlayers}}
+</body>
+
+<template name="catImages">
+  <h2>Battle #{{battleNumber}}. Choose the cutest cat!</h2>
+  <div id='results'></div>
+  <div style="width:100%;">
+    <div style="float:left;width:300px;">
+      <img  id='cat1' class='catChoice' src="/kittens/{{cats.cat1}}.jpg" data-cat="{{cats.cat1}}">
+    </div>
+    <div style="float:left;width:300px;">
+      <img id='cat2' class="catChoice" src="/kittens/{{cats.cat2}}.jpg" data-cat="{{cats.cat2}}">
+    </div>
+	</div>
+  <div style="clear:both;"></div>
+</template>
+
+<template name='catBattleResults'>
+  <table>
+    <tr>
+      <th>Cat</th>
+      <th># Wins</th>
+    </tr>
+    {{#each battleResults}}
+      <tr>
+        <td><img src="/kittens/{{catName}}.jpg" style="width:100px;" /></td>
+        <td>{{numberWins}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</template>
+
+<template name='numberOfPlayers'>
+  <table>
+    <tr>
+      <th>Player Id</th>
+      <th>Votes</th>
+    </tr>
+    {{#each activePlayers}}
+      <tr>
+        <td>{{sessionId}}</td>
+        <td>{{playerVotes sessionId}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</template>
