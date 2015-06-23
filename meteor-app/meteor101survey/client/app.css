@@ -1,0 +1,16 @@
+/* CSS declarations go here */
+ul#suggestions li {
+  list-style: none;
+}
+
+ul#suggestions li.my-post:hover > a.delete {
+  visibility: visible;
+}
+
+a.delete {
+  visibility: hidden;
+}
+
+.my-post {
+  font-weight: bold;
+}
