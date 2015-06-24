@@ -9,6 +9,7 @@ li.question {
 
 li.choice, li.chosen {
   padding-left: 1.3em ;
+  cursor: pointer;
 }
 
 li.choice:before {
