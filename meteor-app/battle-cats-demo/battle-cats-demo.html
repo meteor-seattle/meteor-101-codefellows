@@ -1,92 +1,89 @@
 <head>
-    <meta name="viewport" content="initial-scale=1, user-scalable=0">
-    <title>battle-cats-demo</title>
+  <meta name="viewport" content="initial-scale=1, user-scalable=0">
+  <title>battle-cats-demo</title>
 </head>
 
 <body>
 <div class="ui fixed inverted menu">
-    <div class="container">
-        <div class="title item">Battle Cats!</div>
-    </div>
+  <div class="container">
+    <div class="title item">Battle Cats!</div>
+  </div>
 </div>
 
 <div id="main-segment" class="ui segment">
-    <div class="ui grid">
-        <div class="ui eleven wide column">
-            <div id="battle-segment" class="ui segment">
-                {{> catImages}}
-            </div>
+  <div class="ui grid">
+    <div class="ui eleven wide column">
+      <div id="battle-segment" class="ui segment">
+        {{> catImages}}
+      </div>
 
-            <h3 class="ui header">Players</h3>
-            {{> numberOfPlayers}}
-        </div>
-
-        <div class="ui five wide column">
-            <h4 class="ui center aligned header">Leaderboard</h4>
-            {{> catBattleResults}}
-        </div>
+      <h3 class="ui header">Players</h3>
+      {{> numberOfPlayers}}
     </div>
+
+    <div class="ui five wide column">
+      <h4 class="ui center aligned header">Leaderboard</h4>
+      {{> catBattleResults}}
+    </div>
+  </div>
 </div>
 </body>
 
 <template name="catImages">
-    <h3 class="ui header">Choose a Winner:</h3>
+  <h3 class="ui header">Battle #{{battleNumber}}: Pick a cat!</h3>
 
-    <div id='results'></div>
-    <div class="ui center aligned">
-        <div class="ui medium image">
-            <img id='cat1' class='catChoice' src="/kittens/{{cats.cat1}}.jpg" cat="{{cats.cat1}}">
-            {{> loadingCat}}
-        </div>
-        <div class="ui medium image">
-            <img id='cat2' class="catChoice" src="/kittens/{{cats.cat2}}.jpg" cat="{{cats.cat2}}">
-            {{> loadingCat}}
-        </div>
+  <div id='results'></div>
+  <div class="ui center aligned">
+    <div class="ui medium image">
+      <img id='cat1' class='catChoice' src="/kittens/{{cats.cat1}}.jpg" cat="{{cats.cat1}}">
+      {{> loadingCat}}
     </div>
+    <div class="ui medium image">
+      <img id='cat2' class="catChoice" src="/kittens/{{cats.cat2}}.jpg" cat="{{cats.cat2}}">
+      {{> loadingCat}}
+    </div>
+  </div>
 </template>
 
 <template name='catBattleResults'>
-    {{#each battleResults}}
-        <div class="ui card cat-card">
-            <div class="ui fluid image">
-                <div class="ui green right corner label">{{numberWins}}</div>
-                <img src="/kittens/{{catName}}.jpg"/>
-            </div>
-            <div class="extra content">
-                <span>Cat # {{catName}}</span>
-                <span class="ui right floated header">
-
-                </span>
-            </div>
-        </div>
-    {{/each}}
+  {{#each battleResults}}
+    <div class="ui card cat-card">
+      <div class="ui fluid image">
+        <div class="ui green right corner label">{{numberWins}}</div>
+        <img src="/kittens/{{catName}}.jpg"/>
+      </div>
+      <div class="extra content">
+        <span>Cat # {{catName}}</span>
+      </div>
+    </div>
+  {{/each}}
 </template>
 
 <template name='numberOfPlayers'>
-    {{#each activePlayers}}
-        <div class="ui card player-card">
-            <div class="content">
-                <span>
-                    <i class="user icon"></i>
-                    {{sessionId}}
-                </span>
-            </div>
+  {{#each activePlayers}}
+    <div class="ui card player-card">
+      <div class="content">
+        <span>
+            <i class="user icon"></i>
+          {{sessionId}}
+        </span>
+      </div>
 
-            <div class="extra content">
-                <span>
-                    <i class="thumbs up icon"></i>
-                    Votes
-                </span>
-                <span class="ui right floated header">
-                    {{playerVotes sessionId}}
-                </span>
-            </div>
-        </div>
-    {{/each}}
+      <div class="extra content">
+        <span>
+          <i class="thumbs up icon"></i>
+          Votes
+        </span>
+        <span class="ui right floated header">
+          {{playerVotes sessionId}}
+        </span>
+      </div>
+    </div>
+  {{/each}}
 </template>
 
 <template name="loadingCat">
-    <div class="ui dimmer cat-loader">
-        <div class="ui small text loader">Loading cat...</div>
-    </div>
+  <div class="ui dimmer cat-loader">
+    <div class="ui small text loader">Loading cat...</div>
+  </div>
 </template>

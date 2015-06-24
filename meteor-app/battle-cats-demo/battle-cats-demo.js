@@ -8,18 +8,18 @@ if (Meteor.isClient) {
   var selectedCat = false;
 
   Template.catImages.events({
-    'click .catChoice': function(e,t) {
+    'click .catChoice': function (e, t) {
+      var elem = e.currentTarget;
+      //data-cat was not updating the winningCat, had to revert to attribute
+      var winningCat = $(elem).attr('cat');
 
-      if(selectedCat) {
+      console.log('clicked cat: ', winningCat);
+
+      if (selectedCat) {
         return
       } else {
         selectedCat = true;
       }
-
-      var elem = e.currentTarget;
-
-      //data-cat was not updating the winningCat, had to revert to attribute
-      var winningCat = $(elem).attr('cat');
 
       CatStats.insert({
         catName: winningCat,
@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 
       var catWinsDoc = CatWins.findOne({catName: winningCat});
 
-      if(!catWinsDoc) {
+      if (!catWinsDoc) {
         CatWins.insert({catName: winningCat, numberWins: 1});
       } else if (catWinsDoc) {
         CatWins.update({_id: catWinsDoc._id}, {$inc: {numberWins: 1}});
@@ -37,69 +37,74 @@ if (Meteor.isClient) {
 
       var id = $(elem).attr('id');
       var winningCatNum;
-      if(id === 'cat1') {
+      if (id === 'cat1') {
         winningCatNum = 1
-      } else if(id === 'cat2') {
+      } else if (id === 'cat2') {
         winningCatNum = 2
       }
 
-      //$('#results').text('Cat ' + winningCatNum + ' Wins! Loading Next Battle ...');
+      $('#results').text('Cat ' + winningCatNum + ' Wins! Loading Next Battle ...');
       $('.cat-loader').addClass('active');
 
-      setTimeout(function() {
-        //$('#results').text('');
+      setTimeout(function () {
+        $('#results').text('');
         $('.cat-loader').removeClass('active');
-        selectedCat = false;
 
+        console.log('Resetting cats');
+        selectedCat = false;
         cat1 = null;
         cat2 = null;
 
-        Session.set('battleNumber', Session.get('battleNumber')+1);
+        Session.set('battleNumber', Session.get('battleNumber') + 1);
       }, 1000)
-
     }
   });
 
   Template.catImages.helpers({
-    'cats': function() {
-      if(!cat1)
-        cat1 = chooseRandomNumber(0,13);
+    'cats': function () {
+      var currentBattle = Session.get('battleNumber');
+      console.log('retrieving cats');
+      if (!cat1) {
+        cat1 = chooseRandomNumber(0, 13);
+        console.log('Loading cat1: ', cat1);
+      }
 
-      if(!cat2)
-        cat2 = chooseRandomNumber(0,13, cat1);
+      if (!cat2) {
+        cat2 = chooseRandomNumber(0, 13, cat1);
+        console.log('Loading cat2: ', cat2);
+      }
 
       return {cat1: cat1, cat2: cat2};
     },
-    'battleNumber': function() {
+    'battleNumber': function () {
       return Session.get('battleNumber');
     }
   });
 
   Template.catBattleResults.helpers({
-    'battleResults': function() {
+    'battleResults': function () {
       return CatWins.find({}, {sort: {numberWins: -1}});
     }
   });
 
   Template.numberOfPlayers.helpers({
-    'activePlayers': function() {
+    'activePlayers': function () {
       return ActivePlayers.find({status: 'active', sessionId: {$exists: true}});
     },
-    'playerVotes': function(sessionId) {
-
-      if(!sessionId) {
+    'playerVotes': function (sessionId) {
+      if (!sessionId) {
         return;
       }
       return CatStats.find({sessionId: sessionId}).count();
     }
-  })
+  });
 
-  Meteor.startup(function() {
+  Meteor.startup(function () {
     var sessionId = Random.id();
     Session.set('sessionId', sessionId);
     Session.set('battleNumber', 1);
 
-    Meteor.call('registerClient', sessionId, function(error,result) {
+    Meteor.call('registerClient', sessionId, function (error, result) {
 
     });
   });
@@ -111,7 +116,7 @@ if (Meteor.isServer) {
     ActivePlayers.remove({});
   });
 
-  Meteor.onConnection(function(connection) {
+  Meteor.onConnection(function (connection) {
     console.log(connection);
 
     var userAgent = connection.httpHeaders['user-agent'];
@@ -124,17 +129,22 @@ if (Meteor.isServer) {
       provider: 'server'
     });
 
-    connection.onClose(function() {
+    connection.onClose(function () {
       ActivePlayers.update({connectionId: connection.id}, {$set: {status: 'disconnected'}});
     });
   });
 
   Meteor.methods({
-    'registerClient': function(sessionId) {
+    'registerClient': function (sessionId) {
       console.log('conn', this.connection);
-      console.log('sessionId',sessionId);
+      console.log('sessionId', sessionId);
 
-      ActivePlayers.upsert({connectionId: this.connection.id}, {$set: {sessionId: sessionId, connectionId: this.connection.id}});
+      ActivePlayers.upsert({connectionId: this.connection.id}, {
+        $set: {
+          sessionId: sessionId,
+          connectionId: this.connection.id
+        }
+      });
     }
   })
 }
@@ -142,36 +152,36 @@ if (Meteor.isServer) {
 function chooseRandomNumber(min, max, notEqualTo) {
   var randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
 
-  if(!notEqualTo) {
+  if (!notEqualTo) {
     return randomNumber;
   }
 
-  if(randomNumber != notEqualTo) {
+  if (randomNumber != notEqualTo) {
     return randomNumber;
   } else {
-    return chooseRandomNumber(min,max, notEqualTo);
+    return chooseRandomNumber(min, max, notEqualTo);
   }
 }
 
 function getBrowser(sUsrAg) {
   var sBrowser;
 
-  if(sUsrAg.indexOf("Android") > -1) {
+  if (sUsrAg.indexOf("Android") > -1) {
     sBrowser = "Android OS"
   } else if (sUsrAg.indexOf('iPad')) {
     sBrowser = "iPad";
   } else if (sUsrAg.indexOf('iPhone')) {
     sBrowser = 'iPhone';
-  } else if(sUsrAg.indexOf("Chrome") > -1) {
+  } else if (sUsrAg.indexOf("Chrome") > -1) {
     sBrowser = "Google Chrome";
   } else if (sUsrAg.indexOf("Safari") > -1) {
-      sBrowser = "Apple Safari";
+    sBrowser = "Apple Safari";
   } else if (sUsrAg.indexOf("Opera") > -1) {
-      sBrowser = "Opera";
+    sBrowser = "Opera";
   } else if (sUsrAg.indexOf("Firefox") > -1) {
-      sBrowser = "Mozilla Firefox";
+    sBrowser = "Mozilla Firefox";
   } else if (sUsrAg.indexOf("MSIE") > -1) {
-      sBrowser = "Microsoft Internet Explorer";
+    sBrowser = "Microsoft Internet Explorer";
   }
 
   return sBrowser;
