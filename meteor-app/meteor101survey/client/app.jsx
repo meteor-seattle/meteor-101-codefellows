@@ -8,4 +8,5 @@ Meteor.startup(function () {
   Meteor.call('setUserId', myId);
 
   React.render(<SuggestionInputList />, document.getElementById('suggestion-box'));
+  React.render(<SurveyList />, document.getElementById('survey-questions'));
 });

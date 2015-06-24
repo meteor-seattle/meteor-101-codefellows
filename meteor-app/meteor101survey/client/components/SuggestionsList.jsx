@@ -17,10 +17,10 @@ SuggestionsList = React.createClass({
 
   render: function() {
     var self = this;
-    var listItems = this.state.suggestList.map(function(item) {
+    var listItems = self.state.suggestList.map(function(item) {
       var isMine = '';
       if (item.createdBy === Session.get('deviceId')) {
-        isMine = 'my-post'
+        isMine = 'my-post';
       }
       return (
         <li key={item._id} className={isMine ? isMine : 'your-post'}>
@@ -31,6 +31,7 @@ SuggestionsList = React.createClass({
         </li>
       );
     });
+
     return (
       <ul id="suggestions">
         {listItems}
