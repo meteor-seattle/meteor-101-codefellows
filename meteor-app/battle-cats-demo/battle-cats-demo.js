@@ -7,6 +7,15 @@ if (Meteor.isClient) {
   var cat1, cat2;
   var selectedCat = false;
 
+  Template.header.helpers({
+    'playerCount': function () {
+      return ActivePlayers.find().count();
+    },
+    'voteCount': function () {
+      return CatStats.find().count();
+    }
+  });
+
   Template.catImages.events({
     'click .catChoice': function (e, t) {
       var elem = e.currentTarget;

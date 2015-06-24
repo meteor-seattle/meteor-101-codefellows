@@ -4,11 +4,7 @@
 </head>
 
 <body>
-<div class="ui fixed inverted menu">
-  <div class="container">
-    <div class="title item">Battle Cats!</div>
-  </div>
-</div>
+{{> header}}
 
 <div id="main-segment" class="ui segment">
   <div class="ui grid">
@@ -28,6 +24,24 @@
   </div>
 </div>
 </body>
+
+<template name="header">
+  <div class="ui fixed inverted menu">
+    <div class="container">
+      <div class="title item">Battle Cats!</div>
+      <div class="right menu">
+        <div class="ui item">
+          <i class="user icon"></i>
+          {{playerCount}}
+        </div>
+        <div class="ui item">
+          <i class="thumbs up icon"></i>
+          {{voteCount}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <template name="catImages">
   <h3 class="ui header">Battle #{{battleNumber}}: Pick a cat!</h3>
