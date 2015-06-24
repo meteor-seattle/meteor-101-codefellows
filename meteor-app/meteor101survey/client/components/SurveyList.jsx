@@ -14,10 +14,7 @@ SurveyList = React.createClass({
   render: function() {
     var questionList = this.state.surveyQs.map(function(question) {
       return (
-        <div key={question._id}>
-          <SurveyAnswerChart key={'chart-' + question._id} canvasId={question._id} choices={question.choices} />
-          <SurveyQuestion key={'quest-' + question._id} question={question} />
-        </div>
+        <SurveyQuestion key={'quest-' + question._id} question={question} />
       );
     });
     return (
