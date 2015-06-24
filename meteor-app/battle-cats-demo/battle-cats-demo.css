@@ -1,1 +1,32 @@
 /* CSS declarations go here */
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#main-segment {
+    padding-top: 40px;
+    background-color: rgba(0,0,0,0.1);
+}
+#battle-segment {
+    background-color: #fff;
+}
+.ui.medium.image {
+    margin: 5px 0
+}
+.ui.center.aligned, .ui.center.aligned .ui.image img {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.player-card.ui.card > .extra.content {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.player-card.ui.card > .extra.content,
+.player-card.ui.card > .extra.content > .header {
+    color: #fff;
+}
+.ui.card .ui.corner.label {
+    text-align: right;
+    padding-top: 3px;
+    padding-right: 3px;
+}

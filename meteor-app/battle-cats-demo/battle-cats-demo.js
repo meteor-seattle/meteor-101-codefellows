@@ -43,10 +43,12 @@ if (Meteor.isClient) {
         winningCatNum = 2
       }
 
-      $('#results').text('Cat ' + winningCatNum + ' Wins! Loading Next Battle ...');
+      //$('#results').text('Cat ' + winningCatNum + ' Wins! Loading Next Battle ...');
+      $('.cat-loader').addClass('active');
 
       setTimeout(function() {
-        $('#results').text('');
+        //$('#results').text('');
+        $('.cat-loader').removeClass('active');
         selectedCat = false;
 
         cat1 = null;
@@ -60,9 +62,6 @@ if (Meteor.isClient) {
 
   Template.catImages.helpers({
     'cats': function() {
-
-      var currentBattle = Session.get('battleNumber');
-
       if(!cat1)
         cat1 = chooseRandomNumber(0,13);
 
@@ -155,6 +154,8 @@ function chooseRandomNumber(min, max, notEqualTo) {
 }
 
 function getBrowser(sUsrAg) {
+  var sBrowser;
+
   if(sUsrAg.indexOf("Android") > -1) {
     sBrowser = "Android OS"
   } else if (sUsrAg.indexOf('iPad')) {
