@@ -56,18 +56,24 @@ SurveyQuestion = React.createClass({
   render: function() {
     var self = this;
     var chosen = -1;
-    var lineStyle = {stroke: 'rgb(255,0,0)', strokeWidth: '2'};
+    var choiceSum = 0;
+    for (i = 0; i < self.props.question.choices.length; i++) {
+      choiceSum += self.props.question.choices[i].value;
+    }
+
     var listChoices = self.props.question.choices.map(function(choice, index) {
       var choiceClass = 'choice';
+      var choicePercent = (choice.value / choiceSum * 100);
+      var lineStyle = {stroke: choice.color, strokeWidth: '5'};
       if (choice.voters.indexOf(Session.get('deviceId')) >= 0) {
         choiceClass = 'chosen';
         chosen = index;
       }
       return (
         <li key={index} className={choiceClass} onClick={self.handleClick.bind(self, index, self.props.question._id)}>
-          {choice.label}
-          <svg className='graph' width='200px' height='5px'>
-            <line className='graph' x1='0' y1='0' x2='200' y2='0' style={lineStyle} />
+          {choice.label}<br />
+          <svg className='graph' width='250px' height='5px'>
+            <line className='graph' x1='0' y1='3' x2={choicePercent + '%'} y2='3' style={lineStyle} />
           </svg>
         </li>
       );
