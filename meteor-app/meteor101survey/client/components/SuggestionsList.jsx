@@ -11,8 +11,8 @@ SuggestionsList = React.createClass({
     };
   },
   
-  handleClick: function(key) {
-    return Suggestions.remove({_id: key});
+  handleClick: function(id) {
+    return Suggestions.remove({_id: id});
   },
 
   render: function() {
