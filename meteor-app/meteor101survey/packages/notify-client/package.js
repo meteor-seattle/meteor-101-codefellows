@@ -16,6 +16,7 @@ Package.onUse(function(api) {
   api.addFiles('client.js', ['client']);
   api.addFiles('server.js', ['server']);
 
+  api.export('ClientNotifications')
   api.export('NotifyClient');
 
 })
