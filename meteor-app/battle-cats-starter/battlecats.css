@@ -1,1 +1,11 @@
 /* CSS declarations go here */
+table tr th, table tr td {
+	text-align: center;
+}
+
+table tr th {
+	font-size: 36px;
+}
+table tr td {
+	font-size: 28px;
+}

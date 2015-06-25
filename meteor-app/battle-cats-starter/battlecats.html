@@ -18,11 +18,17 @@
 </template>
 
 <template name="tally">
-	<h2>Results</h2>
-	{{#each results}}
-	<div>
-		<h3>Cat: {{name}}</h3>
-		<h3># Votes: {{votes}}</h3>
-	</div>
-	{{/each}}
+	<h2>Cat Leaderboard</h2>
+	<table>
+		<tr>
+			<th>Cat</th>
+			<th># Votes</th>
+		</tr>
+		{{#each results}}
+		<tr>
+			<td>{{name}}</td>
+			<td>{{votes}}</td>
+		</tr>
+		{{/each}}
+	</table>
 </template>

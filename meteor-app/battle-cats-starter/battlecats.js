@@ -1,4 +1,4 @@
-Cats = new Meteor.Collection('cats');
+Cats = new Mongo.Collection('cats');
 
 if (Meteor.isClient) {
   Template.battle.helpers({
