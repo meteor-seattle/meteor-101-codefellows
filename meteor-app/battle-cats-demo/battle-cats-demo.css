@@ -19,7 +19,7 @@ body {
     margin-right: auto;
 }
 .player-card.ui.card > .extra.content {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .player-card.ui.card > .extra.content,
 .player-card.ui.card > .extra.content > .header {
