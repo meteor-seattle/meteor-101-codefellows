@@ -20,7 +20,8 @@ NotifyClient.register = function() {
 
 NotifyClient.sendToAllOtherClients = function(message) {
   Meteor.call('notifyOtherClients', NotifyClient.clientSessionId, message, function(error, result) {
-
+    //console.log("Error: " + error);
+    //console.log("Result: " + result);
   });
 };
 

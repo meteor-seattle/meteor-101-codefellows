@@ -15,9 +15,9 @@
   <section id="suggestions-container">
     <section id="suggestion-box"></section>
   </section>
+  {{> sAlert}}
   <script>
     $('#reveal-survey').click(function (e) {
-      console.log($('#survey-container'));
       if ($('#survey-container').is(":hidden")) {
           $('#survey-container').show("slow");
           $('#reveal-survey').text('Hide Survey');
