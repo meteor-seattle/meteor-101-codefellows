@@ -4,7 +4,7 @@ SuggestionInputList = React.createClass({
   },
   
   getInitialState: function() {
-    return {userInput: '', pagingCount: 10};
+    return {userInput: '', pagingCount: 20};
   },
 
   handleChange: function(evt){
@@ -32,7 +32,7 @@ SuggestionInputList = React.createClass({
   render: function() {
     return (
       <section>
-        <input id='new-world' type='text' value={this.state.userInput} onChange={this.handleChange} onKeyUp={this.handleInput} />
+        <textarea id='comment-box' placeholder='give us some feedback or ask some questions' value={this.state.userInput} onChange={this.handleChange} onKeyUp={this.handleInput} ></textarea>
         <SuggestionsList {...this.props} />
         <a id='show-more' onClick={this.handleClick} >Show more</a>
       </section>

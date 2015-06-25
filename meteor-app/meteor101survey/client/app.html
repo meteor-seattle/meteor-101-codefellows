@@ -1,8 +1,30 @@
 <head>
   <title>Meteor 101 Survey</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
-  <h2>Meteor 101 Survey</h2>
-  <section id="survey-questions"></section>
-  <section id="suggestion-box"></section>
+  <h2 align="center">Meteor 101 Survey and Feeback</h2>
+
+  <h3>Get to Know You Survey</h3><button id='reveal-survey'>Hide Survey</button>
+  <section id="survey-container">
+    <section id="survey-questions"></section>
+  </section>
+
+
+  <h3>Realtime and Feedback/Questions</h3>
+  <section id="suggestions-container">
+    <section id="suggestion-box"></section>
+  </section>
+  <script>
+    $('#reveal-survey').click(function (e) {
+      console.log($('#survey-container'));
+      if ($('#survey-container').is(":hidden")) {
+          $('#survey-container').show("slow");
+          $('#reveal-survey').text('Hide Survey');
+        } else {
+          $('#survey-container').slideUp();
+          $('#reveal-survey').text('Reveal Survey');
+        }
+    });
+  </script>
 </body>

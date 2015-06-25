@@ -1,3 +1,5 @@
+SuggestionsTransitionGroup = React.addons.CSSTransitionGroup;
+
 SuggestionsList = React.createClass({
   mixins: [ DDPMixin, ReactiveMixin ],
 
@@ -34,7 +36,9 @@ SuggestionsList = React.createClass({
 
     return (
       <ul id="suggestions">
-        {listItems}
+        <SuggestionsTransitionGroup transitionName='fadein'>
+          {listItems}
+        </SuggestionsTransitionGroup>
       </ul>
     );
   }

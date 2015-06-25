@@ -71,7 +71,7 @@ SurveyQuestion = React.createClass({
       }
       return (
         <li key={index} className={choiceClass} onClick={self.handleClick.bind(self, index, self.props.question._id)}>
-          {choice.label}<br />
+          {choice.label}
           <svg className='graph' width='250px' height='5px'>
             <line className='graph' x1='0' y1='3' x2={choicePercent + '%'} y2='3' style={lineStyle} />
           </svg>

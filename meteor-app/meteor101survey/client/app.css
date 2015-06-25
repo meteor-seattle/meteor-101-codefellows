@@ -1,29 +1,68 @@
-/* CSS declarations go here */
+body {
+  font-family: Arial, Geneva, Helvetica, sans-serif;
+}
+
+ul#suggestions li {
+  font-weight: 200;
+  display: inline-block;
+  vertical-align: top;
+  overflow: wrap;
+  width: 250px;
+  margin: 8px;
+  padding: 3px;
+  border-width: thin;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: lightgray;
+}
+.fadein-enter {
+  opacity: 0.01;
+  transition: opacity .3s ease-in;
+}
+
+.fadein-enter.fadein-enter-active {
+  opacity: 1;
+}
+
+.fadein-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.fadein-leave.fadein-leave-active {
+  opacity: 0.01;
+}
+
 ul li {
   list-style: none;
 }
 
 li.question {
+  margin-top: 1em;
   font-weight: bold;
 }
 
 li.choice, li.chosen {
   padding-left: 1.3em ;
   cursor: pointer;
+  margin: 1em;
 }
 
 li.choice:before {
   content: '\f096';
   font-family: FontAwesome;
-  display: inline-block;
+  font-size: 20px;
+  display: inline;
   margin-left: -1.3em;
+  margin-right: 0.3em;
   width: 1.3em;
 }
 
 li.chosen:before {
   content: '\f046';
   font-family: FontAwesome;
-  display: inline-block;
+  font-size: 20px;
+  display: inline;
   margin-left: -1.3em;
   width: 1.3em;
 }
@@ -38,4 +77,39 @@ a.delete {
 
 .my-post {
   font-weight: bold;
+}
+
+#comment-box {
+  font-size: 1em;
+  width: 90%;
+  height: 3em;
+  padding-left: 1.3em;
+}
+
+.graph {
+  display:block;
+  margin-left: -1em;
+}
+
+#suggestions-container {
+/*  background-color: #FFFFF6 ;*/
+}
+
+#survey-container {
+  background-color: #FFFFF6 ;
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+/* CSS styles for smartphones here */
+  body {
+    font-size: 15px;
+  }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* CSS styles for tablets here */
 }
