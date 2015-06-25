@@ -4,7 +4,7 @@ SuggestionsList = React.createClass({
   mixins: [ DDPMixin, ReactiveMixin ],
 
   subscriptions: function() {
-    return Meteor.subscribe('allSuggestions', this.props.pagingCount);
+    return Meteor.subscribe('allSuggestions', 50);
   },
 
   getReactiveState: function() {

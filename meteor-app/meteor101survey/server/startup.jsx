@@ -1,8 +1,9 @@
 Meteor.startup(function() {
   // seed some suggestions
+  Suggestions.remove({});
   if (Suggestions.find().count() === 0) {
     var suggestions = [
-      'Great presentation! Meteor blew me away!',
+      'Great presentation! Meteor is awesome!',
       'When\'s the next Meteor 101?',
       'You need more cool animations.'
     ];
@@ -16,6 +17,7 @@ Meteor.startup(function() {
   }
 
   // seed some survey questions
+  SurveyQuestions.remove({});
   if (SurveyQuestions.find().count() === 0) {
     var sampleQs = [
       {
@@ -28,7 +30,7 @@ Meteor.startup(function() {
         ]
       },
       {
-        question: 'What\'s your web framework/platform of choice these days?',
+        question: 'What web framework/platform do you use most these days?',
         choices: [
           { label: 'Meteor', value: 0, color: 'rgb(114, 147, 203)', voters: [] },
           { label: 'Node', value: 0, color: 'rgb(225, 151, 76)', voters: [] },
@@ -39,7 +41,30 @@ Meteor.startup(function() {
           { label: 'Django', value: 0, color: 'rgb(171, 104, 87)', voters: [] },
           { label: 'Other', value: 0, color: 'rgb(204, 194, 16)', voters: [] }
         ]
-      }
+      },
+      {
+        question: 'What web framework/platform would you like to use more?',
+        choices: [
+          { label: 'Meteor', value: 0, color: 'rgb(114, 147, 203)', voters: [] },
+          { label: 'Node', value: 0, color: 'rgb(225, 151, 76)', voters: [] },
+          { label: 'Angular', value: 0, color: 'rgb(132, 186, 91)', voters: [] },
+          { label: 'Ember', value: 0, color: 'rgb(211, 94, 96)', voters: [] },
+          { label: 'React', value: 0, color: 'rgb(128, 133, 133)', voters: [] },
+          { label: 'Rails', value: 0, color: 'rgb(144, 103, 167)', voters: [] },
+          { label: 'Django', value: 0, color: 'rgb(171, 104, 87)', voters: [] },
+          { label: 'Other', value: 0, color: 'rgb(204, 194, 16)', voters: [] }
+        ]
+      },
+      {
+        question: 'Which of these areas of dev do you think needs the most improvement?',
+        choices: [
+          { label: 'Deployment', value: 0, color: 'rgb(114, 147, 203)', voters: [] },
+          { label: 'Tool Chain', value: 0, color: 'rgb(225, 151, 76)', voters: [] },
+          { label: 'Dev/Ops', value: 0, color: 'rgb(132, 186, 91)', voters: [] },
+          { label: 'Updates/Versioning', value: 0, color: 'rgb(211, 94, 96)', voters: [] },
+          { label: 'Other', value: 0, color: 'rgb(128, 133, 133)', voters: [] }
+        ]
+      },
     ];
 
     _.each(sampleQs, function(question) {
