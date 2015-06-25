@@ -30,3 +30,7 @@ body {
     padding-top: 3px;
     padding-right: 3px;
 }
+#connection-lost-banner {
+    margin-top: 35px;
+    background-color: white;
+}
