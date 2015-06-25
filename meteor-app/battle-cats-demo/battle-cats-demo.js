@@ -116,6 +116,8 @@ if (Meteor.isClient) {
     Meteor.call('registerClient', sessionId, function (error, result) {
 
     });
+
+    NotifyClient.register();
   });
 }
 
