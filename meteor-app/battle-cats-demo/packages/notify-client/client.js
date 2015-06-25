@@ -15,6 +15,8 @@ NotifyClient.register = function() {
     }
   });
 
+  Meteor.subscribe('clientNotifications');
+
   NotifyClient.isRegistered = true;
 }
 
@@ -25,11 +27,12 @@ NotifyClient.sendToAllOtherClients = function(message) {
 };
 
 NotifyClient.alertClient = function(message, dateSent) {
-  console.log('i got something to say',sAlert);
   sAlert.success(message, {
     timeout: null,
     html: true
   })
 }
 
-
+Meteor.startup(function() {
+  NotifyClient.register();
+});
