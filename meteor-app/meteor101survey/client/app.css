@@ -3,7 +3,6 @@ body {
 }
 
 ul#suggestions li {
-  font-weight: 200;
   display: inline-block;
   vertical-align: top;
   overflow: wrap;
@@ -76,7 +75,12 @@ a.delete {
 }
 
 .my-post {
-  font-weight: bold;
+/*  font-weight: 600;*/
+}
+
+.my-post {
+/*  font-weight: 200;*/
+  background-color: #AFC7B9;
 }
 
 #comment-box {
