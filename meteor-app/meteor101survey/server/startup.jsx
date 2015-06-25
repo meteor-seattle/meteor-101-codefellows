@@ -1,6 +1,6 @@
 Meteor.startup(function() {
   // seed some suggestions
-  Suggestions.remove({});
+  //Suggestions.remove({});
   if (Suggestions.find().count() === 0) {
     var suggestions = [
       'Great presentation! Meteor is awesome!',
@@ -17,7 +17,7 @@ Meteor.startup(function() {
   }
 
   // seed some survey questions
-  SurveyQuestions.remove({});
+  //SurveyQuestions.remove({});
   if (SurveyQuestions.find().count() === 0) {
     var sampleQs = [
       {
