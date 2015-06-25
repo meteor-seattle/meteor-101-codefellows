@@ -1,0 +1,8 @@
+<template name="layout">
+  <div id="asdfsdf">
+    <input type="text" id="moveSlide" style="position:absolute;top:-1000px;" />
+    {{#momentum with='iron-router' plugin="customC" options=transitionOptions}}
+    {{> yield}}
+    {{/momentum}}
+  </div>
+</template>

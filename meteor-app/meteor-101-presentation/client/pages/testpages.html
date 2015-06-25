@@ -1,0 +1,314 @@
+<template name="tp1">
+
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;"  out="bounceOutLeft" in="bounceInRight" nextSlide="tp2" prevSlide="tp14" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="height:100%;margin-top:200px;">
+        <div class="col col-center" style="height:100%;text-align:center;">
+
+          <h1 id="n1">
+            <div>Introduction to Meteor</div>
+            <div style="margin-top:30px;">Rapid Rich JavaScript Web Apps</div>
+          </h1>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp2">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp3" prevSlide="tp1" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+
+            Agenda
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            <li class="item">The Basics</li>
+            <li class="item">Setting up an enviornment</li>
+            <li class="item">Application Structure</li>
+            <li class="item">Templates, Events &amp; Helpers</li>
+            <li class="item">Sample Todo App</li>
+            
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp3">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp4" prevSlide="tp2" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+
+            Basics - What is Meteor?
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            <li class="item">Meteor is both a web client and a web server</li>
+            <li class="item">Meteor is written in Javascript (client/server)</li>
+            <li class="item">Meteor works on top of NodeJS and MongoDB</li>
+            <li class="item">Meteor comes with pre-built components for rapid web development</li>
+            <li class="item">Meteor has a packaging system which makes code very reusable</li>
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp4">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp5" prevSlide="tp3" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+
+            Basics - Meteor's secret sauce
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            <li class="item">Meteor is full stack reactivity</li>
+            <li class="item">Meteor has a live templating engine</li>
+            <li class="item">Meteor has a copy of MongoDB on the server and the client</li>
+            <li class="item">Meteor plays nice with the best open source JS libraries</li>
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp5">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp6" prevSlide="tp4" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+
+            Setting up your enviornment
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            <li class="item">Support platforms include Linux and Mac OSX 10.6+</li>
+            <li class="item">Installing is easy: <b>curl https://install.meteor.com | /bin/sh</b></li>
+            <li class="item">Create your first project: <b>meteor create myapp</b></li>
+            <li class="item">Run your first app from project folder: <b>meteor</b></li>
+            <li class='item'>Deploy your app: <b>meteor deploy app.meteor.com</b></li>
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp6">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp7" prevSlide="tp5" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+            Application Structure
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            
+            <li class="item">Code can be run on server, client or both!</li>
+            <li class="item">Meteor is very flexible in how you structure your app</li>
+            <li class="item">Files consist of JavaScript, HTML & CSS</li>
+            
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp7">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp8" prevSlide="tp6" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+            Application Structure - Special folders
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt">
+          <ul class="list">
+            
+            <li class="item"><b>server</b> (loaded on server only)</li>
+            <li class="item"><b>client</b> (loaded on the client only)</li>
+            <li class="item"><b>public</b> (all public assests)</li>
+            <li class="item"><b>private</b> (private server assess)</li>
+            <li class="item"><b>lib</b> (special folder that loads before other app assests - not before packages)</li>
+            
+          </ul>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp8">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp9" prevSlide="tp7" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+            Templates
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt;">
+          
+          <div style="color:green;">
+          &lt;template name='myTemplate' &gt;
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;...
+          <br/>
+          <br/>
+          &lt;/template&gt;
+          </div>
+          <div style="margin-top:100px;">
+            <p>This creates a <span style="font-weight:bold;">Template.myTemplate</span> instance</p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp9">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp10" prevSlide="tp8" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+            Template Events
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt;">
+          
+          <div style="color:green;">
+          Template.myTemplate.events({<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;"click .className": function(e,t) {<br/><br/>
+            
+            <br/>&nbsp;&nbsp;&nbsp;}
+          <br/>  
+          <br/> })
+          </div>
+            
+          <div style="margin-top:100px;">
+            <p>click, dblclick, focus, blur, change, mouseenter, mouseleave, <br/><br/>mousedown, mouseup, keyup, keydown, keypress</p>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp10">
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;" out="bounceOutLeft" in="bounceInRight" nextSlide="tp11" prevSlide="tp9" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="margin-top:10%;">
+        <div class="col col-offset-10" style="height:100%;">
+          <h1>
+            Template Helpers
+          </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col  col-offset-10" style="font-size:18pt;">
+          <div style="color:green;">
+          &lt;template name='myTemplate' &gt;
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&#123;&#123;helper1 param1 param2&#125;&#125;
+          <br/>
+          <br/>
+          &lt;/template&gt;
+          </div>
+          <div style="color:green;margin-top:40px;">
+          Template.myTemplate.helpers({<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;helper1: function(param1, param2) {<br/><br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return param1 + param2; <br/><br/>
+            &nbsp;&nbsp;&nbsp;}
+          <br/>  
+          <br/> })
+          </div>
+            
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+<template name="tp11">
+
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;"  out="bounceOutLeft" in="bounceInRight" nextSlide="tp12" prevSlide="tp10" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="height:100%;margin-top:200px;">
+        <div class="col col-center" style="height:100%;text-align:center;">
+
+          <h1 id="n1">
+            <div>Demo Time!</div>
+            <div style="margin-top:30px;">Todo app</div>
+          </h1>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+
+<template name="tp12">
+  <div id="exitDemo" out="bounceOutLeft" in="bounceInRight" nextSlide="tp13">
+  <div id="endDemo" style="position:absolute;width:200px;height:100px;z-index:999;bottom:0px;left:0px;text-align:center;background-color:white">
+    <p style="margin-top:20px;font-size:20pt;">Join in!</p><p style="font-size:20pt;">bit.ly/1DKG1rZ</p>
+    
+    </div>
+  <iframe src="http://seagl-todos.meteor.com" style="width:100%;{{height}}"></iframe>
+  </div>
+</template>
+
+<template name="tp13">
+
+  <div id="pageContent" class="grid-cell cell-fluid nextSlide" style="-webkit-overflow-scrolling: touch;"  out="bounceOutLeft" in="bounceInRight" nextSlide="tp14" prevSlide="tp11" tabindex="1">
+    <ion-content>
+      <div class="row row-center" style="height:100%;margin-top:200px;">
+        <div class="col col-center" style="height:100%;text-align:center;">
+
+          <h1 id="n1">
+            <div>Play Time!</div>
+            <div style="margin-top:30px;"></div>
+          </h1>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+</template>
+
+<template name="tp14">
+  <div id="exitDemo" out="bounceOutLeft" in="bounceInRight" nextSlide="tp1" prevSlide="tp12">
+  <div id="endDemo" style="position:absolute;width:200px;height:100px;z-index:999;bottom:0px;left:0px;text-align:center;">
+    
+    
+    </div>
+  <iframe src="http://winterfell-nodejs-83810.usw1.nitrousbox.com:4000" style="width:100%;{{height}}"></iframe>
+  </div>
+</template>
