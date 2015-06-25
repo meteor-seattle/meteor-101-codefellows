@@ -1,0 +1,28 @@
+<head>
+  <title>battlecats</title>
+</head>
+
+<body>
+  <h1>Welcome to Battlecats!</h1>
+
+  {{> battle}}
+  {{> tally}}
+</body>
+
+<template name="battle">
+  <div>
+	{{#each cats}}
+  	<img id="{{_id}}" src="/images/{{image}}">
+	{{/each}}
+  </div>
+</template>
+
+<template name="tally">
+	<h2>Results</h2>
+	{{#each results}}
+	<div>
+		<h3>Cat: {{name}}</h3>
+		<h3># Votes: {{votes}}</h3>
+	</div>
+	{{/each}}
+</template>
