@@ -1,0 +1,41 @@
+/* CSS declarations go here */
+ul li {
+  list-style: none;
+}
+
+li.question {
+  font-weight: bold;
+}
+
+li.choice, li.chosen {
+  padding-left: 1.3em ;
+  cursor: pointer;
+}
+
+li.choice:before {
+  content: '\f096';
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em;
+  width: 1.3em;
+}
+
+li.chosen:before {
+  content: '\f046';
+  font-family: FontAwesome;
+  display: inline-block;
+  margin-left: -1.3em;
+  width: 1.3em;
+}
+
+ul#suggestions li.my-post:hover > a.delete {
+  visibility: visible;
+}
+
+a.delete {
+  visibility: hidden;
+}
+
+.my-post {
+  font-weight: bold;
+}
